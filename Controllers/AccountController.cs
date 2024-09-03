@@ -155,7 +155,8 @@ namespace FineCar.Controllers
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    CarNumber = model.CarNumber  // Сохранение номера автомобиля
+                    CarNumber = model.CarNumber,
+                    // Сохранение номера автомобиля
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

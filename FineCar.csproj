@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CarOwners.cs" />
     <Compile Include="Models\Fine.cs" />
     <Compile Include="Models\FineContext.cs" />
     <Compile Include="Models\FineDbInitializer.cs" />
@@ -243,8 +244,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Fines.cshtml" />
-    <Content Include="Views\Home\FineCreate.cshtml" />
     <Content Include="Views\Home\FineDelete.cshtml" />
+    <Content Include="Views\Home\FineCreate.cshtml" />
     <Content Include="Views\Home\FineEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
