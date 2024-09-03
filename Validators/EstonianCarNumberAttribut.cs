@@ -12,7 +12,7 @@ namespace FineCar.Attributes  // Замените на ваш namespace
             // Проверка на null и формат эстонского номера машины
             if (carNumber == null || !Regex.IsMatch(carNumber, @"^[A-Z]{3}-\d{3}$"))
             {
-                return new ValidationResult("Неверный формат номера автомобиля. Допустимый формат: 3 буквы и 3 цифры (например, ABC-123).");
+                return new ValidationResult("Sobimatu sõiduki numbri vorming. Aktsepteeritav formaat: 3 tähte ja 3 numbrit (näiteks ABC-123).");
             }
 
             return ValidationResult.Success;

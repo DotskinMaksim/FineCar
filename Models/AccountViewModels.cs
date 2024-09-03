@@ -79,6 +79,10 @@ namespace FineCar.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Car Number")]
+        public string CarNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

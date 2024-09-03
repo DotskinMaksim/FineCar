@@ -1,30 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
-using System.Text.RegularExpressions;
-
+using System.Linq;
 
 namespace FineCar.Validators
 {
-    public class EstonianPhoneNumberAttribut : ValidationAttribute
+    public class EstonianPhoneNumberAttribute : ValidationAttribute
     {
-
-
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var phoneNumber = value as string;
 
-            // Проверка на null и формат эстонского номера машины
-            if (phoneNumber == null || (phoneNumber.Length != 7 && phoneNumber.Length != 8))
+            if (phoneNumber == null)
             {
-                return new ValidationResult("Неверный формат номера автомобиля. Допустимый формат: 3 буквы и 3 цифры (например, ABC-123).");
+                return new ValidationResult("Telefoninumber ei tohi olla tühi.");
+            }
+
+            if (phoneNumber.Length != 7 && phoneNumber.Length != 8)
+            {
+                return new ValidationResult("Kehtetu telefoninumbri vorming. Kehtiv vorming: 7 või 8 numbrit.");
+            }
+
+            if (!phoneNumber.All(char.IsDigit))
+            {
+                return new ValidationResult("Telefoninumber peab sisaldama ainult numbreid.");
             }
 
             return ValidationResult.Success;
         }
-
-
     }
 }
