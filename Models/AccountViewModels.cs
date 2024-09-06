@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using FineCar.Validators;
 
 namespace FineCar.Models
 {
@@ -87,15 +88,20 @@ namespace FineCar.Models
 
         [Required]
         [Display(Name = "Car Number")]
+        //[EstonianCarNumber]
+
         public string CarNumber { get; set; }
 
 
         [Required]
         [Display(Name = "Personal code")]
+        [EstonianPersonalCode]
         public string PersonalCode { get; set; }
 
         [Required]
         [Display(Name = "Phone Number")]
+        [EstonianPhoneNumber]
+
         public string Phone { get; set; }
     }
 

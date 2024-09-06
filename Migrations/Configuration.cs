@@ -5,14 +5,15 @@
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FineCar.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<FineCar.Models.FineContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "FineCar.Models.FineContext";
         }
 
-        protected override void Seed(FineCar.Models.ApplicationDbContext context)
+        protected override void Seed(FineCar.Models.FineContext context)
         {
             //  This method will be called after migrating to the latest version.
 

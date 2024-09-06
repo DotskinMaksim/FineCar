@@ -174,9 +174,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409030731545_InitialCreate.cs" />
+    <Compile Include="Migrations\202409030731545_InitialCreate.designer.cs">
+      <DependentUpon>202409030731545_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409060919327_UpdateDatabaseSchema.cs" />
+    <Compile Include="Migrations\202409060919327_UpdateDatabaseSchema.designer.cs">
+      <DependentUpon>202409060919327_UpdateDatabaseSchema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CarOwners.cs" />
+    <Compile Include="Models\CarOwner.cs" />
     <Compile Include="Models\Fine.cs" />
     <Compile Include="Models\FineContext.cs" />
     <Compile Include="Models\FineDbInitializer.cs" />
@@ -184,8 +192,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Validators\EstonianCarNumberAttribut.cs" />
-    <Compile Include="Validators\EstonianPhoneNumberAttribut.cs" />
+    <Compile Include="Validators\EstonianCarNumberAttribute.cs" />
+    <Compile Include="Validators\EstonianPersonalCodeAttribute.cs" />
+    <Compile Include="Validators\EstonianPhoneNumberAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -263,6 +272,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202409030731545_InitialCreate.resx">
+      <DependentUpon>202409030731545_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409060919327_UpdateDatabaseSchema.resx">
+      <DependentUpon>202409060919327_UpdateDatabaseSchema.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

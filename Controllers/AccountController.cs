@@ -151,25 +151,53 @@ namespace FineCar.Controllers
         {
             if (ModelState.IsValid)
             {
+                using (var db = new FineContext())
+                {
+                    // Проверка наличия владельца автомобиля с таким личным кодом и номером машины
+                    var existingOwner = db.CarOwners
+                        .FirstOrDefault(o => o.PersonalCode == model.PersonalCode && o.CarNumber == model.CarNumber);
+
+                    if (existingOwner != null)
+                    {
+                        // Добавляем ошибку модели, если такой владелец уже существует
+                        ModelState.AddModelError("", "Владелец с данным личным кодом и номером автомобиля уже зарегистрирован.");
+                        return View(model); // Возвращаем пользователя на страницу регистрации
+                    }
+                }
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
                     Email = model.Email,
-                    CarNumber = model.CarNumber,
-                    // Сохранение номера автомобиля
+                    // Можно сохранить дополнительные данные в пользовательской модели
                 };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // Сохраняем владельца автомобиля в базе данных
+                    using (var db = new FineContext())
+                    {
+                        var carOwner = new CarOwner
+                        {
+                            PersonalCode = model.PersonalCode,
+                            CarNumber = model.CarNumber
+                        };
+                        db.CarOwners.Add(carOwner);
+                        db.SaveChanges(); // Сохраняем изменения в базе данных
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
 
-            // Если мы попали сюда, значит произошла ошибка. Повторно отображаем форму
+            // Если произошла ошибка, снова отображаем форму регистрации
             return View(model);
         }
+
 
         //
         // GET: /Account/ConfirmEmail

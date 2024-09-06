@@ -10,5 +10,6 @@ namespace FineCar.Models
     {
 
         public DbSet<Fine> Fines { get; set; }
+        public DbSet<CarOwner> CarOwners { get; set; }
     }
 }
